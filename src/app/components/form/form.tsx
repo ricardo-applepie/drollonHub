@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 import Link from "next/link";
 import { useState } from "react";
 import { postData } from "@/utils/utils";
@@ -69,50 +69,50 @@ export default function Form(props: FormProps) {
         <form className="bg-white shadow-md rounded px-12 pt-10 pb-8 mb-4">
            {!isLogin && (
             <> 
-                {/* First Name */}
-                <div className="mb-4">
-                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">
-                    First Name
-                  </label>
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="firstName"
-                    type="text"
-                    placeholder="Enter First Name"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                  />
-                </div>
+              {/* First Name */}
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">
+                  First Name
+                </label>
+                <input
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="firstName"
+                  type="text"
+                  placeholder="Enter First Name"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                />
+              </div>
 
-                {/* Last Name */}
-                <div className="mb-4">
-                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">
-                    Last Name
-                  </label>
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="lastName"
-                    type="text"
-                    placeholder="Enter Last Name"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                  />
-                </div>
+              {/* Last Name */}
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">
+                  Last Name
+                </label>
+                <input
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="lastName"
+                  type="text"
+                  placeholder="Enter Last Name"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                />
+              </div>
 
-                {/* Username */}
-                <div className="mb-4">
-                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                    Username
-                  </label>
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="username"
-                    type="text"
-                    placeholder="Enter Username"
-                    value={formData.username}
-                    onChange={handleChange}
-                  />
-                </div>   
+              {/* Username */}
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+                  Username
+                </label>
+                <input
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="username"
+                  type="text"
+                  placeholder="Enter Username"
+                  value={formData.username}
+                  onChange={handleChange}
+                />
+              </div>   
             </>
            )}
 
@@ -149,7 +149,7 @@ export default function Form(props: FormProps) {
           {/* Submit Button */}
           <div className="flex flex-col">
             <button
-              className="bg-black text-white font-bold py-2 px-4 rounded"
+              className="text-white font-bold py-2 px-4 rounded btn-primary"
               type="button"
               onClick={handleSubmit}
             >
@@ -173,4 +173,4 @@ export default function Form(props: FormProps) {
       </div>
     </div>
   );
-}
+};

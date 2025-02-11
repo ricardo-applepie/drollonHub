@@ -1,7 +1,7 @@
 'use client';
 
 import './login.scss';
-import Form from "../components/form/form";
+import Form from "../components/form/Form";
 
 export default function Login() {
 

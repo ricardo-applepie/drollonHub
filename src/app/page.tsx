@@ -1,11 +1,32 @@
 'use client';
-import { Button, FormGroup, Grid2, TextField } from '@mui/material';
-import Image from 'next/image';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+import { Button, TextField } from '@mui/material';
 import AccordionUsage from './components/accordion/Accordion';
 import OutlinedCard from './components/card/Card';
+import SearchIcon from '@mui/icons-material/Search';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearchQueryCity } from '@/redux/listings/listings';
+
 
 export default function Home() {
   const icons = ['Neubauprojekte', 'Haus bauen', 'Gewerbeimmobilien', 'Auslandsimmobilien'];
+  const { city } = useSelector((state: any) =>  state.searchListings.searchQuery);
+  const encodedSearchKeyword = encodeURIComponent(city);
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    router.push(`/search?city=${encodedSearchKeyword}`);
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    const encodedSearchKeyword = encodeURIComponent(value);
+    dispatch(setSearchQueryCity(encodedSearchKeyword));
+  };
 
   return (
     <main className="flex flex-col h-full w-full font-[family-name:var(--font-geist-sans)]">
@@ -13,14 +34,25 @@ export default function Home() {
         <div className="search">
           <h1 className="text-4xl md:text-5xl text-center text-white uppercase text-bold-900">Discover your new home</h1>
           <h2  className="text-xl md:text-2xl text-center my-5 text-white">Rent a place and stay for months.</h2>
-          <form className="search__form bg-white pt-10 pb-5 px-10">
+          <form className="search__form bg-white pt-10 pb-5 px-10" onSubmit={handleSubmit}>
             <div className="flex flex-col md:flex-row gap-2">
-              <TextField placeholder="Where will you go ?" className="w-full md:w-2/5" />
+              <TextField 
+                placeholder="Where will you go ?" 
+                className="w-full md:w-2/5" 
+                onChange={handleChange}
+                value={city}
+              />
               <div className="flex w-full md:w-2/5 gap-2">
                 <TextField placeholder="Move-in date" className="w-1/2"  />
                 <TextField placeholder="Move-out date" className="w-1/2 " />
               </div>
-              <Button variant="contained" className="w-full md:w-1/5" >Search</Button>
+              <Button 
+                variant="contained" 
+                className="w-full md:w-1/5"
+                type='submit'
+              > 
+                <SearchIcon /> Search
+              </Button>
             </div>
           </form>
         </div>
